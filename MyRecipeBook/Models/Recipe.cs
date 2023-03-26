@@ -12,7 +12,7 @@ namespace MyRecipeBook.Models
         public string Cuisine { get; set; } = null!;
         public int Serves { get; set; }
         public List<string> Ingredients { get; set; } = null!;
-        public string Steps { get; set; } = null!;
+        public List<string> Steps { get; set; } = null!;
         public DateTime PreparationTime { get; set; }
         public DateTime CookTime { get; set; }
     }

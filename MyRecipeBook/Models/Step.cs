@@ -8,7 +8,15 @@ namespace MyRecipeBook.Models
         public int Id { get; set; }
 
         [StringLength(250, MinimumLength = 3)]
-        public string Content { get; set; } = null!;
+        public string Step1 { get; set; } = null!;
+        [StringLength(250)]
+        public string? Step2 { get; set; }
+        [StringLength(250)]
+        public string? Step3 { get; set; }
+        [StringLength(250)]
+        public string? Step4 { get; set; }
+        [StringLength(250)]
+        public string? Step5 { get; set; } 
 
         public int RecipeId { get; set; }
         public Recipe Recipe { get; set; } = null!;

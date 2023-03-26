@@ -31,4 +31,6 @@ app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 
+//SeedData.Initialize(app);
+
 app.Run();

@@ -21,10 +21,10 @@ namespace MyRecipeBook.Models
 
         [Range(1, 10)]
         public int Serves { get; set; }
-        public ICollection<Ingredient> Ingredients { get; set; } = null!;
-        public ICollection<Step> Steps { get; set; } = null!;
-        public TimeSpan PreparationTime { get; set; }
-        public TimeSpan CookTime { get; set; }
+        public Ingredient Ingredients { get; set; } = null!;
+        public Step Steps { get; set; } = null!;
+        public string PreparationTime { get; set; } = string.Empty;
+        public string CookTime { get; set; } = string.Empty;
         public string Image { get; set; } = null!;
     }
 }

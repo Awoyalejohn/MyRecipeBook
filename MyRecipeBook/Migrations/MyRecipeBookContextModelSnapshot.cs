@@ -96,7 +96,8 @@ namespace MyRecipeBook.Migrations
 
                     b.Property<string>("CookTime")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Cuisine")
                         .IsRequired()
@@ -110,7 +111,8 @@ namespace MyRecipeBook.Migrations
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -119,7 +121,8 @@ namespace MyRecipeBook.Migrations
 
                     b.Property<string>("PreparationTime")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int>("Serves")
                         .HasColumnType("int");
@@ -173,9 +176,7 @@ namespace MyRecipeBook.Migrations
                 {
                     b.HasOne("MyRecipeBook.Models.Recipe", "Recipe")
                         .WithOne("Ingredients")
-                        .HasForeignKey("MyRecipeBook.Models.Ingredient", "RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MyRecipeBook.Models.Ingredient", "RecipeId");
 
                     b.Navigation("Recipe");
                 });
@@ -184,20 +185,16 @@ namespace MyRecipeBook.Migrations
                 {
                     b.HasOne("MyRecipeBook.Models.Recipe", "Recipe")
                         .WithOne("Steps")
-                        .HasForeignKey("MyRecipeBook.Models.Step", "RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MyRecipeBook.Models.Step", "RecipeId");
 
                     b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("MyRecipeBook.Models.Recipe", b =>
                 {
-                    b.Navigation("Ingredients")
-                        .IsRequired();
+                    b.Navigation("Ingredients");
 
-                    b.Navigation("Steps")
-                        .IsRequired();
+                    b.Navigation("Steps");
                 });
 #pragma warning restore 612, 618
         }

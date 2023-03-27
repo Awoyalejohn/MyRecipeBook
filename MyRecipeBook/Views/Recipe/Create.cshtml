@@ -8,32 +8,32 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control">
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Recipe.Name" class="control-label"></label>
+                <input asp-for="Recipe.Name" class="form-control">
+                <span asp-validation-for="Recipe.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Recipe.Description" class="control-label"></label>
+                <textarea asp-for="Recipe.Description" class="form-control"></textarea>
+                <span asp-validation-for="Recipe.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input type="text" asp-for="Category" class="form-control">
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <label asp-for="Recipe.Category" class="control-label"></label>
+                <input type="text" asp-for="Recipe.Category" class="form-control">
+                <span asp-validation-for="Recipe.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cuisine" class="control-label"></label>
-                <input type="text" asp-for="Cuisine" class="form-control">
-                <span asp-validation-for="Cuisine" class="text-danger"></span>
+                <label asp-for="Recipe.Cuisine" class="control-label"></label>
+                <input type="text" asp-for="Recipe.Cuisine" class="form-control">
+                <span asp-validation-for="Recipe.Cuisine" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Serves" class="control-label"></label>
-                <input asp-for="Serves" class="form-control">
-                <span asp-validation-for="Serves" class="text-danger"></span>
+                <label asp-for="Recipe.Serves" class="control-label"></label>
+                <input asp-for="Recipe.Serves" class="form-control">
+                <span asp-validation-for="Recipe.Serves" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Ingredients.Ingredient1" class="control-label"></label>
@@ -113,19 +113,19 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="PreparationTime" class="control-label"></label>
-                <input asp-for="PreparationTime" class="form-control">
-                <span asp-validation-for="PreparationTime" class="text-danger"></span>
+                <label asp-for="Recipe.PreparationTime" class="control-label"></label>
+                <input asp-for="Recipe.PreparationTime" class="form-control">
+                <span asp-validation-for="Recipe.PreparationTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CookTime" class="control-label"></label>
-                <input asp-for="CookTime" class="form-control">
-                <span asp-validation-for="CookTime" class="text-danger"></span>
+                <label asp-for="Recipe.CookTime" class="control-label"></label>
+                <input asp-for="Recipe.CookTime" class="form-control">
+                <span asp-validation-for="Recipe.CookTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control">
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="Recipe.Image" class="control-label"></label>
+                <input asp-for="Recipe.Image" class="form-control">
+                <span asp-validation-for="Recipe.Image" class="text-danger"></span>
             </div>
 
             <div class="form-group">

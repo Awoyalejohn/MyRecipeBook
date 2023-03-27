@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -22,9 +21,9 @@ namespace MyRecipeBook.Migrations
                     Category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Cuisine = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Serves = table.Column<int>(type: "int", nullable: false),
-                    PreparationTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    CookTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PreparationTime = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    CookTime = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +36,16 @@ namespace MyRecipeBook.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Ingredient1 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Ingredient2 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient3 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient4 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient5 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient6 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient7 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient8 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient9 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Ingredient10 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     RecipeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -47,8 +55,7 @@ namespace MyRecipeBook.Migrations
                         name: "FK_Ingredients_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +64,11 @@ namespace MyRecipeBook.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Step1 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Step2 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Step3 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Step4 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Step5 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     RecipeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -67,19 +78,20 @@ namespace MyRecipeBook.Migrations
                         name: "FK_Steps_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_RecipeId",
                 table: "Ingredients",
-                column: "RecipeId");
+                column: "RecipeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Steps_RecipeId",
                 table: "Steps",
-                column: "RecipeId");
+                column: "RecipeId",
+                unique: true);
         }
 
         /// <inheritdoc />

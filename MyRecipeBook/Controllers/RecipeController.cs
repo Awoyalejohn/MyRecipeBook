@@ -85,5 +85,71 @@ namespace MyRecipeBook.Controllers
             return View(recipe);
         }
 
+        // GET Recipe/Edit/{Id}
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Recipes == null) 
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipes.FindAsync(id);
+
+            if (recipe == null) { return NotFound(); }
+
+            var recipeViewModel = new RecipeViewModel()
+            {
+               Recipe = recipe,
+               Ingredients = recipe.Ingredients!,
+               Steps = recipe.Steps!
+            };
+            // TODO: Here is a good place to pass info into the constructor
+
+            return View(recipeViewModel);
+
+        }
+
+        // POST Recipe/Edit/{Id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Recipe,Ingredients,Steps")] RecipeViewModel recipeViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit recipe");
+                return View(recipeViewModel);
+            }
+
+            var recipe = await _context.Recipes.FirstOrDefaultAsync(r =>r.Id == id);
+
+            if (recipe != null)
+            {
+                recipe = recipeViewModel.Recipe;
+                recipe.Ingredients = recipeViewModel.Ingredients;
+                recipe.Steps = recipeViewModel.Steps;
+
+                try
+                {
+                    _context.Add(recipe);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception)
+                {
+                    //Log the error (uncomment ex varible name and write a log.
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists " +
+                        "see your system administrator.");
+                }
+            }
+            return View(recipeViewModel);
+
+
+        }
+        private bool RecipeExists(int id)
+        {
+            return _context.Recipes.Any(r => r.Id == id);
+        }
+
     }
 }

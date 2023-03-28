@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Data;
+using MyRecipeBook.Repositotory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddDbContext<MyRecipeBookContext>(options =>
 });
 
 builder.Services.AddControllersWithViews();
+
+// Repository service
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 
 var app = builder.Build();
 

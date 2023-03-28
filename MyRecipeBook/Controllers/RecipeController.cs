@@ -6,21 +6,22 @@ using MyRecipeBook.Models;
 using MyRecipeBook.Models.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
 using System.Net;
+using MyRecipeBook.Repositotory;
 
 namespace MyRecipeBook.Controllers
 {
     public class RecipeController : Controller
     {
-        private readonly MyRecipeBookContext _context;
-        public RecipeController(MyRecipeBookContext context)
+        private readonly IRecipeRepository _recipeRepository;
+        public RecipeController(IRecipeRepository recipeRepository)
         {
-            _context = context;
+            _recipeRepository = recipeRepository;
         }
 
         // GET: Recipe
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Recipes.AsNoTracking().ToListAsync());
+            return View(await _recipeRepository.GetAllRecipesAsync());
         }
 
         // GET: Recipe/Create
@@ -51,8 +52,8 @@ namespace MyRecipeBook.Controllers
 
                 try
                 {
-                    _context.Add(recipe);
-                    await _context.SaveChangesAsync();
+                    _recipeRepository.InsertRecipe(recipe);
+                    await _recipeRepository.SaveAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
@@ -73,16 +74,10 @@ namespace MyRecipeBook.Controllers
         // GET Recipe/Detail/{Id}
         public async Task<IActionResult> Detail(int? id)
         {
-            if (id == null || _context.Recipes == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var recipe = await _context.Recipes
-                .Include(r => r.Ingredients)
-                .Include(r => r.Steps)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(r => r.Id == id);
+            var recipe = await _recipeRepository
+                .GetRecipeByIdAsyncNoTracking(Convert.ToInt32(id));
 
             if (recipe == null) { return NotFound(); }
 
@@ -92,16 +87,10 @@ namespace MyRecipeBook.Controllers
         // GET Recipe/Edit/{Id}
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Recipes == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var recipe = await _context.Recipes
-                .Include(r => r.Ingredients)
-                .Include(r => r.Steps)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(r => r.Id == id);
+            var recipe = await _recipeRepository
+                .GetRecipeByIdAsyncNoTracking(Convert.ToInt32(id));
 
             if (recipe == null) { return NotFound(); }
 
@@ -128,11 +117,7 @@ namespace MyRecipeBook.Controllers
                 return View(recipeViewModel);
             }
 
-            var recipe = await _context.Recipes
-                //.AsNoTracking()
-                .Include(r => r.Ingredients)
-                .Include(r => r.Steps)
-                .FirstOrDefaultAsync(r => r.Id == id);
+            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
 
             if (recipe != null)
             {
@@ -162,9 +147,8 @@ namespace MyRecipeBook.Controllers
 
                 try
                 {
-                    //_context.ChangeTracker.Clear();
-                    _context.Update(recipe);
-                    await _context.SaveChangesAsync();
+                    _recipeRepository.UpdateRecipe(recipe);
+                    await _recipeRepository.SaveAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
@@ -181,12 +165,10 @@ namespace MyRecipeBook.Controllers
         // GET: Recipe/Delete/{id}
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Recipes == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var recipe = await _context.Recipes.AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
+            var recipe = await _recipeRepository
+                .GetRecipeByIdAsyncNoTracking(Convert.ToInt32(id));
 
             if (recipe == null) { return NotFound(); }
 
@@ -198,22 +180,15 @@ namespace MyRecipeBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Recipes == null)
-            {
-                return Problem("Entity set 'MyRecipeBookContext.Recipe' is null");
-            }
+            var recipe = await _recipeRepository
+               .GetRecipeByIdAsync(id);
 
-            var recipe = await _context.Recipes.FindAsync(id);
-
-            if (recipe == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
+            if (recipe == null) return NotFound();
 
             try
             {
-                _context.Recipes.Remove(recipe);
-                await _context.SaveChangesAsync();
+                _recipeRepository.DeleteRecipe(recipe);
+                await _recipeRepository.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateException /* ex */)

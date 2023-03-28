@@ -33,19 +33,12 @@
         <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient10)</li>
     </ul>
     <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Delete</button> |
+            <a asp-action="Index">Back to List</a>
+        </form>
     </div>
 </div>
 
-<form asp-action="Delete">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Delete</button> |
-    <a asp-action="Index">Back to List</a>
-</form>
 
-<div>
-    <!-- Edit link goes here  -->
-    <!-- Delete link goes here  -->
-    <a asp-action="Index">Back to List</a>
-</div>

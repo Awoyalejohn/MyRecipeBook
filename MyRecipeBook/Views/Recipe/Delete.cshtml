@@ -1,0 +1,51 @@
+﻿@model MyRecipeBook.Models.Recipe
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="card" style="width: 18rem;">
+    <img src="@Model.Image" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
+        <p class="card-text">Steps:</p>
+        <p class="card-text">@Html.DisplayFor(model => model.Steps!.Step1)</p>
+        <p class="card-text">@Html.DisplayFor(model => model.Steps!.Step2)</p>
+        <p class="card-text">@Html.DisplayFor(model => model.Steps!.Step3)</p>
+        <p class="card-text">@Html.DisplayFor(model => model.Steps!.Step4)</p>
+        <p class="card-text">@Html.DisplayFor(model => model.Steps!.Step5)</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Ingredients:</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient1)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient2)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient3)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient4)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient5)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient6)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient7)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient8)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient9)</li>
+        <li class="list-group-item">@Html.DisplayFor(model => model.Ingredients!.Ingredient10)</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button> |
+    <a asp-action="Index">Back to List</a>
+</form>
+
+<div>
+    <!-- Edit link goes here  -->
+    <!-- Delete link goes here  -->
+    <a asp-action="Index">Back to List</a>
+</div>

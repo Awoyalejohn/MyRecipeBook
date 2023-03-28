@@ -1,0 +1,136 @@
+﻿@model MyRecipeBook.Models.ViewModels.RecipeViewModel
+
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<h1>Create Recipes</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Recipe.Name" class="control-label"></label>
+                <input asp-for="Recipe.Name" class="form-control">
+                <span asp-validation-for="Recipe.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Description" class="control-label"></label>
+                <textarea asp-for="Recipe.Description" class="form-control"></textarea>
+                <span asp-validation-for="Recipe.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Category" class="control-label"></label>
+                <input type="text" asp-for="Recipe.Category" class="form-control">
+                <span asp-validation-for="Recipe.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Cuisine" class="control-label"></label>
+                <input type="text" asp-for="Recipe.Cuisine" class="form-control">
+                <span asp-validation-for="Recipe.Cuisine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Serves" class="control-label"></label>
+                <input asp-for="Recipe.Serves" class="form-control">
+                <span asp-validation-for="Recipe.Serves" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient1" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient1" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient2" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient2" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient3" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient3" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient4" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient4" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient5" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient5" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient6" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient6" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient7" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient7" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient7" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="Ingredients.Ingredient8" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient8" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient9" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient9" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients.Ingredient10" class="control-label"></label>
+                <input asp-for="Ingredients.Ingredient10" class="form-control">
+                <span asp-validation-for="Ingredients.Ingredient10" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="Steps.Step1" class="control-label"></label>
+                <textarea asp-for="Steps.Step1" class="form-control"></textarea>
+                <span asp-validation-for="Steps.Step1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Steps.Step2" class="control-label"></label>
+                <textarea asp-for="Steps.Step2" class="form-control"></textarea>
+                <span asp-validation-for="Steps.Step2" class="text-danger"></span>
+            </div>
+                  <div class="form-group">
+                <label asp-for="Steps.Step3" class="control-label"></label>
+                <textarea asp-for="Steps.Step3" class="form-control"></textarea>
+                <span asp-validation-for="Steps.Step3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Steps.Step4" class="control-label"></label>
+                <textarea asp-for="Steps.Step4" class="form-control"></textarea>
+                <span asp-validation-for="Steps.Step4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Steps.Step5" class="control-label"></label>
+                <textarea asp-for="Steps.Step5" class="form-control"></textarea>
+                <span asp-validation-for="Steps.Step5" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Recipe.PreparationTime" class="control-label"></label>
+                <input asp-for="Recipe.PreparationTime" class="form-control">
+                <span asp-validation-for="Recipe.PreparationTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.CookTime" class="control-label"></label>
+                <input asp-for="Recipe.CookTime" class="form-control">
+                <span asp-validation-for="Recipe.CookTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Image" class="control-label"></label>
+                <input asp-for="Recipe.Image" class="form-control">
+                <span asp-validation-for="Recipe.Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

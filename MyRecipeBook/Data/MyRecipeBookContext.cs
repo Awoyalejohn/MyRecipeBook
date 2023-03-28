@@ -19,7 +19,8 @@ namespace MyRecipeBook.Data
                 .HasOne(r => r.Ingredients)
                 .WithOne(i => i.Recipe)
                 .HasForeignKey<Ingredient>(i => i.RecipeId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Ingredient>()
                 .HasOne(i => i.Recipe)
@@ -30,7 +31,8 @@ namespace MyRecipeBook.Data
                 .HasOne(r => r.Steps)
                 .WithOne(s => s.Recipe)
                 .HasForeignKey<Step>(s => s.RecipeId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Step>()
                 .HasOne(s => s.Recipe)

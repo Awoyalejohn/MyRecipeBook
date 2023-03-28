@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyRecipeBook.Data;
 
@@ -10,9 +11,11 @@ using MyRecipeBook.Data;
 namespace MyRecipeBook.Migrations
 {
     [DbContext(typeof(MyRecipeBookContext))]
-    partial class MyRecipeBookContextModelSnapshot : ModelSnapshot
+    [Migration("20230328162216_AddCascadeDeleteToRecipe")]
+    partial class AddCascadeDeleteToRecipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

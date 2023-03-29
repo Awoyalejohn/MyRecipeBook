@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Extensions.Options;
+using MyRecipeBook.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyRecipeBook.Models
 {
@@ -33,9 +35,7 @@ namespace MyRecipeBook.Models
         [Required(ErrorMessage = "Please enter the cook time")]
         public string CookTime { get; set; } = string.Empty;
 
-        [StringLength(100, MinimumLength = 3)]
-        [Required(ErrorMessage = "Please add an image")]
-        public string Image { get; set; } = string.Empty;
+        public string? Image { get; set; }
 
         public Ingredient? Ingredients { get; set; } // navigation property
         public Step? Steps { get; set; } // navigation property

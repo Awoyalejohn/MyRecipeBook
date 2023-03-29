@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Data;
+using MyRecipeBook.Helpers;
 using MyRecipeBook.Repositotory;
+using MyRecipeBook.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,10 @@ builder.Services.AddControllersWithViews();
 
 // Repository service
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+
+// Add services for Cloudianry
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 
 var app = builder.Build();
 

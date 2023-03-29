@@ -7,15 +7,18 @@ using MyRecipeBook.Models.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
 using System.Net;
 using MyRecipeBook.Repositotory;
+using MyRecipeBook.Services;
 
 namespace MyRecipeBook.Controllers
 {
     public class RecipeController : Controller
     {
         private readonly IRecipeRepository _recipeRepository;
-        public RecipeController(IRecipeRepository recipeRepository)
+        private readonly IImageService _imageService;
+        public RecipeController(IRecipeRepository recipeRepository, IImageService imageService)
         {
             _recipeRepository = recipeRepository;
+            _imageService = imageService;
         }
 
         // GET: Recipe
@@ -30,11 +33,14 @@ namespace MyRecipeBook.Controllers
         // POST: Recipe/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Recipe,Ingredients,Steps")] RecipeViewModel recipeViewModel)
+        public async Task<IActionResult> Create([Bind("Recipe,Ingredients,Steps,UploadImage")] RecipeViewModel recipeViewModel)
         {
             // Uses the RecipeViewModel to create the initial data
             if (ModelState.IsValid)
             {
+                // passes in the image from the recipeViewmodel
+                var imageResult = await _imageService.AddImageAsync(recipeViewModel.UploadImage);
+
                 // passes in the data from RecipeViewModel to create the actual Recipe
                 Recipe recipe = new Recipe()
                 {
@@ -47,7 +53,7 @@ namespace MyRecipeBook.Controllers
                     Steps = recipeViewModel.Steps,
                     PreparationTime = recipeViewModel.Recipe.PreparationTime,
                     CookTime = recipeViewModel.Recipe.CookTime,
-                    Image = recipeViewModel.Recipe.Image
+                    Image = imageResult.Url.ToString(),
                 };
 
                 try
@@ -109,7 +115,7 @@ namespace MyRecipeBook.Controllers
         // POST Recipe/Edit/{Id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Recipe,Ingredients,Steps")] RecipeViewModel recipeViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Recipe,Ingredients,Steps,UploadImage")] RecipeViewModel recipeViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -121,6 +127,22 @@ namespace MyRecipeBook.Controllers
 
             if (recipe != null)
             {
+                try
+                {
+                    // attempts to delete the old image
+                    var fileInfo = new FileInfo(recipe.Image);
+                    var publicId = Path.GetFileNameWithoutExtension(fileInfo.Name);
+                    await _imageService.DeleteImageAsync(publicId);
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Could not delete photo");
+                    return View(recipeViewModel);
+                }
+
+                // passes in the image from the recipeViewmodel
+                var imageResult = await _imageService.AddImageAsync(recipeViewModel.UploadImage);
+
                 recipe.Name = recipeViewModel.Recipe.Name;
                 recipe.Description = recipeViewModel.Recipe.Description;
                 recipe.Category = recipeViewModel.Recipe.Category;
@@ -143,7 +165,7 @@ namespace MyRecipeBook.Controllers
                 recipe.Steps.Step5 = recipeViewModel.Steps.Step5;
                 recipe.PreparationTime = recipeViewModel.Recipe.PreparationTime;
                 recipe.CookTime = recipeViewModel.Recipe.CookTime;
-                recipe.Image = recipeViewModel.Recipe.Image;
+                recipe.Image = imageResult.Url.ToString();
 
                 try
                 {
@@ -187,13 +209,18 @@ namespace MyRecipeBook.Controllers
 
             try
             {
+                // Attemps to delete image before deleting the club
+                var fileInfo = new FileInfo(recipe.Image);
+                var publicId = Path.GetFileNameWithoutExtension(fileInfo.Name);
+                await _imageService.DeleteImageAsync(publicId);
+
                 _recipeRepository.DeleteRecipe(recipe);
                 await _recipeRepository.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch (DbUpdateException /* ex */)
+            catch (Exception)
             {
-                //Log the error (uncomment ex variable name and write a log.)
+                ModelState.AddModelError("", "Could not delete image");
                 return RedirectToAction(nameof(Delete), new { id, saveChangesError = true });
             }
         }

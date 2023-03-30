@@ -41,20 +41,9 @@ namespace MyRecipeBook.Controllers
                 // passes in the image from the recipeViewmodel
                 var imageResult = await _imageService.AddImageAsync(recipeViewModel.UploadImage);
 
-                // passes in the data from RecipeViewModel to create the actual Recipe
-                Recipe recipe = new Recipe()
-                {
-                    Name = recipeViewModel.Recipe.Name,
-                    Description = recipeViewModel.Recipe.Description,
-                    Category = recipeViewModel.Recipe.Category,
-                    Cuisine = recipeViewModel.Recipe.Cuisine,
-                    Serves = recipeViewModel.Recipe.Serves,
-                    Ingredients = recipeViewModel.Ingredients,
-                    Steps = recipeViewModel.Steps,
-                    PreparationTime = recipeViewModel.Recipe.PreparationTime,
-                    CookTime = recipeViewModel.Recipe.CookTime,
-                    Image = imageResult.Url.ToString(),
-                };
+                var recipe = new Recipe();
+                // maps  the recipe viewmodel to the the recipe entity
+                recipeViewModel.MapToEntity(recipe, imageResult);
 
                 try
                 {
@@ -143,29 +132,7 @@ namespace MyRecipeBook.Controllers
                 // passes in the image from the recipeViewmodel
                 var imageResult = await _imageService.AddImageAsync(recipeViewModel.UploadImage);
 
-                recipe.Name = recipeViewModel.Recipe.Name;
-                recipe.Description = recipeViewModel.Recipe.Description;
-                recipe.Category = recipeViewModel.Recipe.Category;
-                recipe.Cuisine = recipeViewModel.Recipe.Cuisine;
-                recipe.Serves = recipeViewModel.Recipe.Serves;
-                recipe.Ingredients.Ingredient1 = recipeViewModel.Ingredients.Ingredient1;
-                recipe.Ingredients.Ingredient2 = recipeViewModel.Ingredients.Ingredient2;
-                recipe.Ingredients.Ingredient3 = recipeViewModel.Ingredients.Ingredient3;
-                recipe.Ingredients.Ingredient4 = recipeViewModel.Ingredients.Ingredient4;
-                recipe.Ingredients.Ingredient5 = recipeViewModel.Ingredients.Ingredient5;
-                recipe.Ingredients.Ingredient6 = recipeViewModel.Ingredients.Ingredient6;
-                recipe.Ingredients.Ingredient7 = recipeViewModel.Ingredients.Ingredient7;
-                recipe.Ingredients.Ingredient8 = recipeViewModel.Ingredients.Ingredient8;
-                recipe.Ingredients.Ingredient9 = recipeViewModel.Ingredients.Ingredient9;
-                recipe.Ingredients.Ingredient10 = recipeViewModel.Ingredients.Ingredient10;
-                recipe.Steps.Step1 = recipeViewModel.Steps.Step1;
-                recipe.Steps.Step2 = recipeViewModel.Steps.Step2;
-                recipe.Steps.Step3 = recipeViewModel.Steps.Step3;
-                recipe.Steps.Step4 = recipeViewModel.Steps.Step4;
-                recipe.Steps.Step5 = recipeViewModel.Steps.Step5;
-                recipe.PreparationTime = recipeViewModel.Recipe.PreparationTime;
-                recipe.CookTime = recipeViewModel.Recipe.CookTime;
-                recipe.Image = imageResult.Url.ToString();
+                recipeViewModel.MapToEntity(recipe, imageResult);
 
                 try
                 {

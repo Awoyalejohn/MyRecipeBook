@@ -11,8 +11,8 @@ using MyRecipeBook.Data;
 namespace MyRecipeBook.Migrations
 {
     [DbContext(typeof(MyRecipeBookContext))]
-    [Migration("20230329123247_AddNullToImage")]
-    partial class AddNullToImage
+    [Migration("20230329204754_revertChanges")]
+    partial class revertChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

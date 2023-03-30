@@ -41,7 +41,10 @@ namespace MyRecipeBook.Models.ViewModels
             entity.Steps.Step5 = viewModel.Steps.Step5;
             entity.PreparationTime = viewModel.Recipe.PreparationTime;
             entity.CookTime = viewModel.Recipe.CookTime;
-            entity.Image = imageResult.Url.ToString();
+            if (imageResult != null)
+            {
+                entity.Image = imageResult.Url.ToString();
+            }
         }
     }
 }

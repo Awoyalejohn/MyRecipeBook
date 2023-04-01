@@ -125,7 +125,7 @@ namespace MyRecipeBook.Controllers
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError("", "Could not delete photo");
+                    ModelState.AddModelError("", "Could not edit image");
                     return View(recipeViewModel);
                 }
 

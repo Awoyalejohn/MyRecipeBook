@@ -8,6 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Net;
 using MyRecipeBook.Repositotory;
 using MyRecipeBook.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MyRecipeBook.Controllers
 {
@@ -22,9 +23,36 @@ namespace MyRecipeBook.Controllers
         }
 
         // GET: Recipe
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string category, string cuisine)
         {
-            return View(await _recipeRepository.GetAllRecipesAsync());
+            var recipes = _recipeRepository.GetRecipesQuery();
+
+            var categoryQuery = _recipeRepository.GetRecipeCategoryQuery();
+
+            var cuisineQuery = _recipeRepository.GetRecipeCuisineQuery();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes
+                .Where(s => s.Name.Contains(searchString) ||
+                s.Description.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(category))
+            {
+                recipes = recipes.Where(c => c.Category == category);
+            }
+            if (!string.IsNullOrEmpty(cuisine))
+            {
+                recipes = recipes.Where(c => c.Cuisine == cuisine);
+            }
+
+            var recipeFilterViewModel = new RecipeFilterViewModel()
+            {
+                Recipes = await recipes.ToListAsync(),
+                Categories = new SelectList(await categoryQuery.Distinct().ToListAsync()),
+                Cuisines = new SelectList(await cuisineQuery.Distinct().ToListAsync())
+            };
+            return View(recipeFilterViewModel);
         }
 
         // GET: Recipe/Create

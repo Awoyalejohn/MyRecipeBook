@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyRecipeBook.Models.Recipe>
+﻿@model MyRecipeBook.Models.ViewModels.RecipeFilterViewModel
 
 @{
     ViewData["Title"] = "Recipes";
@@ -8,12 +8,29 @@
 
 <a asp-area="" asp-controller="Recipe" asp-action="Create">Create</a>
 
+<form asp-controller="Recipe" asp-action="Index" method="get">
+
+   
+    <p>
+        <select asp-for="Category" asp-items="Model.Categories">
+            <option value="">--Category--</option>
+        </select>
+        
+        <select asp-for="Cuisine" asp-items="Model.Cuisines">
+            <option value="">--Cuisine--</option>
+        </select>
+
+        Name: <input type="text" asp-for="SearchString" />
+        <button type="submit">Search</button>
+    </p>
+</form>
+
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-           @foreach (var item in Model)
+           @foreach (var item in Model.Recipes)
             {
                 <div class="col">
                     <div class="card shadow-sm">

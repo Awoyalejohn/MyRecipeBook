@@ -24,6 +24,28 @@ namespace MyRecipeBook.Repositotory
                 .ToListAsync();
         }
 
+        public IQueryable<Recipe> GetRecipesQuery()
+        {
+            var recipes = from recipe in _context.Recipes
+                          select recipe;
+            return recipes;
+        }
+
+        public IQueryable<string> GetRecipeCategoryQuery() 
+        {
+            var categoryQuery = from recipe in _context.Recipes
+                                orderby recipe.Category
+                                select recipe.Category;
+            return categoryQuery;
+        }
+        public IQueryable<string> GetRecipeCuisineQuery()
+        {
+            var cuisineQuery = from recipe in _context.Recipes
+                               orderby recipe.Cuisine
+                               select recipe.Cuisine;
+            return cuisineQuery;
+        }
+
         public async Task<Recipe?> GetRecipeByIdAsync(int id)
         {
             return await _context.Recipes

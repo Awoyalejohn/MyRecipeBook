@@ -23,8 +23,10 @@ namespace MyRecipeBook.Controllers
         }
 
         // GET: Recipe
-        public async Task<IActionResult> Index(string searchString, string category, string cuisine)
+        public async Task<IActionResult> Index(string searchString,
+            string category, string cuisine, int? pageNumber)
         {
+
             var recipes = _recipeRepository.GetRecipesQuery();
 
             var categoryQuery = _recipeRepository.GetRecipeCategoryQuery();
@@ -41,17 +43,25 @@ namespace MyRecipeBook.Controllers
             {
                 recipes = recipes.Where(c => c.Category == category);
             }
+
             if (!string.IsNullOrEmpty(cuisine))
             {
                 recipes = recipes.Where(c => c.Cuisine == cuisine);
             }
 
+            int pageSize = 3;
+
+            ViewData["category"] = category;
+            ViewData["cuisine"] = cuisine;
+            ViewData["searchString"] = searchString;
+            
             var recipeFilterViewModel = new RecipeFilterViewModel()
             {
-                Recipes = await recipes.ToListAsync(),
+                Recipes = await PaginatedList<Recipe>.CreateAsync(recipes, pageNumber ?? 1, pageSize),
                 Categories = new SelectList(await categoryQuery.Distinct().ToListAsync()),
                 Cuisines = new SelectList(await cuisineQuery.Distinct().ToListAsync())
             };
+
             return View(recipeFilterViewModel);
         }
 

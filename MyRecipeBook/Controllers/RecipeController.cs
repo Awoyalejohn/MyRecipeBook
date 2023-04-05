@@ -9,6 +9,7 @@ using System.Net;
 using MyRecipeBook.Repositotory;
 using MyRecipeBook.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace MyRecipeBook.Controllers
 {
@@ -16,10 +17,12 @@ namespace MyRecipeBook.Controllers
     {
         private readonly IRecipeRepository _recipeRepository;
         private readonly IImageService _imageService;
-        public RecipeController(IRecipeRepository recipeRepository, IImageService imageService)
+        private readonly MyRecipeBookContext _context;
+        public RecipeController(IRecipeRepository recipeRepository, IImageService imageService, MyRecipeBookContext context)
         {
             _recipeRepository = recipeRepository;
             _imageService = imageService;
+            _context = context;
         }
 
         // GET: Recipe
@@ -111,6 +114,23 @@ namespace MyRecipeBook.Controllers
 
             var recipe = await _recipeRepository
                 .GetRecipeByIdAsyncNoTracking(Convert.ToInt32(id));
+
+            var currentUserId = HttpContext.User
+               .FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var user = await _context.Users
+                .Include(r => r.Recipes)
+                .Where(u => u.Id == currentUserId)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            var hasRecipe = await _context.Recipes.AnyAsync(r => r.MyRecipeBookUserId == currentUserId && r.Id == id);
+
+            ViewData["Bookmarked"] = false;
+            if (hasRecipe)
+            {
+                ViewData["Bookmarked"] = true;
+            }
 
             if (recipe == null) { return NotFound(); }
 

@@ -31,6 +31,9 @@
                         <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Recipe" asp-action="Index">Recipes</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Bookmark" asp-action="Index">Bookmarks</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
@@ -38,6 +41,7 @@
                     </li>
                 </ul>
             </div>
+                <partial name="_LoginPartial" />
         </div>
     </nav>
 
@@ -57,6 +61,7 @@
 
     <!-- Scripts -->
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("scripts", required: false)
 
 </body>
 

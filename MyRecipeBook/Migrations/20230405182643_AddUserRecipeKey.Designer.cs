@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyRecipeBook.Data;
 
@@ -11,9 +12,11 @@ using MyRecipeBook.Data;
 namespace MyRecipeBook.Migrations
 {
     [DbContext(typeof(MyRecipeBookContext))]
-    partial class MyRecipeBookContextModelSnapshot : ModelSnapshot
+    [Migration("20230405182643_AddUserRecipeKey")]
+    partial class AddUserRecipeKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

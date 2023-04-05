@@ -6,6 +6,7 @@ namespace MyRecipeBook.Models
 {
     public class Recipe
     {
+        [Key]
         public int Id { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
@@ -39,5 +40,8 @@ namespace MyRecipeBook.Models
 
         public Ingredient? Ingredients { get; set; } // navigation property
         public Step? Steps { get; set; } // navigation property
+        public string? MyRecipeBookUserId { get; set; } // foreign key property
+        public MyRecipeBookUser? MyRecipeBookUser { get; set; } // navigation property
+
     }
 }

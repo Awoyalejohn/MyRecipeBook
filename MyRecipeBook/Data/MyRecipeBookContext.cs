@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Models;
 
 namespace MyRecipeBook.Data
 {
-    public class MyRecipeBookContext : DbContext
+    public class MyRecipeBookContext : IdentityDbContext<MyRecipeBookUser>
     {
         public MyRecipeBookContext(DbContextOptions<MyRecipeBookContext> options) : base(options) { }
 
@@ -15,6 +16,7 @@ namespace MyRecipeBook.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Recipe>()
                 .HasOne(r => r.Ingredients)
                 .WithOne(i => i.Recipe)

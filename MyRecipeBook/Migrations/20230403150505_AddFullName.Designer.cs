@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyRecipeBook.Data;
 
@@ -11,9 +12,11 @@ using MyRecipeBook.Data;
 namespace MyRecipeBook.Migrations
 {
     [DbContext(typeof(MyRecipeBookContext))]
-    partial class MyRecipeBookContextModelSnapshot : ModelSnapshot
+    [Migration("20230403150505_AddFullName")]
+    partial class AddFullName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,9 +272,6 @@ namespace MyRecipeBook.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -452,11 +452,9 @@ namespace MyRecipeBook.Migrations
 
             modelBuilder.Entity("MyRecipeBook.Models.Recipe", b =>
                 {
-                    b.HasOne("MyRecipeBook.Models.MyRecipeBookUser", "MyRecipeBookUser")
+                    b.HasOne("MyRecipeBook.Models.MyRecipeBookUser", null)
                         .WithMany("Recipes")
                         .HasForeignKey("MyRecipeBookUserId");
-
-                    b.Navigation("MyRecipeBookUser");
                 });
 
             modelBuilder.Entity("MyRecipeBook.Models.Step", b =>

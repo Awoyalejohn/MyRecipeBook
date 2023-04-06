@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Data;
+using MyRecipeBook.Repositotory;
 using System.Security.Claims;
 
 namespace MyRecipeBook.Controllers
@@ -9,20 +10,18 @@ namespace MyRecipeBook.Controllers
     [Authorize(Roles = "User, Admin")]
     public class BookmarkController : Controller
     {
-        private readonly MyRecipeBookContext _context;
+        private readonly IUserRepository _userRepository;
+        private readonly IRecipeRepository _recipeRepository;
 
-        public BookmarkController(MyRecipeBookContext context)
+        public BookmarkController(IUserRepository userRepository, IRecipeRepository recipeRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
+            _recipeRepository = recipeRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var currentUserId = HttpContext.User
-                .FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var user = await _context.Users.Include(r => r.Recipes).Where(u => u.Id == currentUserId).AsNoTracking().FirstOrDefaultAsync();
-            var bookmarkedRecipes = user.Recipes.ToList();
+            var bookmarkedRecipes = await _userRepository.GetUserRecipes();
 
             return View(bookmarkedRecipes);
         }
@@ -31,15 +30,13 @@ namespace MyRecipeBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddBookmark(int id)
         {
-            var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
 
-            var currentUserId = HttpContext.User
-                .FindFirstValue(ClaimTypes.NameIdentifier);
+            if (recipe == null) { return NotFound(); }
 
-            var user = await _context.Users.Include(r => r.Recipes).Where(u => u.Id == currentUserId).FirstOrDefaultAsync();
+            await _userRepository.AddRecipeToUser(recipe);
 
-            user.Recipes.Add(recipe);
-            await _context.SaveChangesAsync();
+            await _userRepository.SaveAsync();
             return RedirectToAction("Detail", "Recipe", new { Id = id});
         }
 
@@ -47,18 +44,14 @@ namespace MyRecipeBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveBookmark(int id)
         {
-            var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
 
-            var currentUserId = HttpContext.User
-                .FindFirstValue(ClaimTypes.NameIdentifier);
+            if (recipe == null) { return NotFound(); }
 
-            var user = await _context.Users.Include(r => r.Recipes).Where(u => u.Id == currentUserId).FirstOrDefaultAsync();
+            await _userRepository.RemoveRecipeFromUser(recipe);
 
-            user.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
+            await _userRepository.SaveAsync();
             return RedirectToAction("Detail", "Recipe", new { Id = id });
         }
-
-
     }
 }

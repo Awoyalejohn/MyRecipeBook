@@ -17,12 +17,10 @@ namespace MyRecipeBook.Controllers
     {
         private readonly IRecipeRepository _recipeRepository;
         private readonly IImageService _imageService;
-        private readonly MyRecipeBookContext _context;
-        public RecipeController(IRecipeRepository recipeRepository, IImageService imageService, MyRecipeBookContext context)
+        public RecipeController(IRecipeRepository recipeRepository, IImageService imageService)
         {
             _recipeRepository = recipeRepository;
             _imageService = imageService;
-            _context = context;
         }
 
         // GET: Recipe
@@ -57,7 +55,7 @@ namespace MyRecipeBook.Controllers
             ViewData["category"] = category;
             ViewData["cuisine"] = cuisine;
             ViewData["searchString"] = searchString;
-            
+
             var recipeFilterViewModel = new RecipeFilterViewModel()
             {
                 Recipes = await PaginatedList<Recipe>.CreateAsync(recipes, pageNumber ?? 1, pageSize),
@@ -118,13 +116,10 @@ namespace MyRecipeBook.Controllers
             var currentUserId = HttpContext.User
                .FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var user = await _context.Users
-                .Include(r => r.Recipes)
-                .Where(u => u.Id == currentUserId)
-                .AsNoTracking()
-                .FirstOrDefaultAsync();
+            var recipes = _recipeRepository.GetRecipesQuery();
 
-            var hasRecipe = await _context.Recipes.AnyAsync(r => r.MyRecipeBookUserId == currentUserId && r.Id == id);
+            bool hasRecipe = await recipes
+                .AnyAsync(r => r.MyRecipeBookUserId == currentUserId && r.Id == id);
 
             ViewData["Bookmarked"] = false;
             if (hasRecipe)

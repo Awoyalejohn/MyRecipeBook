@@ -13,7 +13,7 @@
             @if ((bool)ViewData["Bookmarked"])
             {
                 <form method="post" asp-controller="Bookmark" asp-action="RemoveBookmark">
-                    <input type="hidden" id="Id" name="Id" asp-for="Id" />
+                    <input type="hidden" asp-for="Id" />
                     <button type="submit">
                         <i class="bi bi-bookmark-fill"></i>
                     </button>
@@ -22,7 +22,7 @@
             else
             {
                 <form method="post" asp-controller="Bookmark" asp-action="AddBookmark">
-                    <input type="hidden" id="Id" name="Id" asp-for="Id" />
+                    <input type="hidden" asp-for="Id" />
                     <button type="submit">
                         <i class="bi bi-bookmark"></i>
                     </button>

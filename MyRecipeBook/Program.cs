@@ -27,6 +27,7 @@ builder.Services.AddControllersWithViews();
 
 // Repository service
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Add services for Cloudianry
 builder.Services.AddScoped<IImageService, ImageService>();

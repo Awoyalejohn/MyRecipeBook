@@ -5,3 +5,24 @@
 @import '../lib/bootstrap/scss/bootstrap.scss';
 
 // CSS
+
+$primary-bg-color: #2a5846;
+$primary-text-color: #ffffff;
+
+nav {
+    background-color: $primary-bg-color;
+}
+
+.navbar, .navbar-nav {
+    a {
+        color: $primary-text-color !important;
+
+        &:hover {
+            color: #ffff99 !important; 
+        }
+    }
+}
+
+.hero-section {
+    background-color: $primary-bg-color;
+}

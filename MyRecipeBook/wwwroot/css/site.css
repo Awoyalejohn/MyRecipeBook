@@ -10769,3 +10769,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+nav {
+  background-color: #2a5846;
+}
+
+.navbar a, .navbar-nav a {
+  color: #ffffff !important;
+}
+.navbar a:hover, .navbar-nav a:hover {
+  color: #ffff99 !important;
+}
+
+.hero-section {
+  background-color: #2a5846;
+}

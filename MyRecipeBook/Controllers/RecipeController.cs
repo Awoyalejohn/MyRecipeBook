@@ -51,7 +51,7 @@ namespace MyRecipeBook.Controllers
                 recipes = recipes.Where(c => c.Cuisine == cuisine);
             }
 
-            int pageSize = 3;
+            int pageSize = 6;
 
             ViewData["category"] = category;
             ViewData["cuisine"] = cuisine;

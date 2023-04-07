@@ -18,7 +18,7 @@ builder.Services.AddDbContext<MyRecipeBookContext>(options =>
 
 // Set up Identity service
 builder.Services.AddDefaultIdentity<MyRecipeBookUser>(options =>
-options.SignIn.RequireConfirmedAccount = true)
+options.SignIn.RequireConfirmedAccount = false)
     .AddDefaultTokenProviders()
     .AddRoles<IdentityRole>() // <--------
     .AddEntityFrameworkStores<MyRecipeBookContext>();

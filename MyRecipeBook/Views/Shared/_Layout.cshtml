@@ -9,11 +9,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/lib/material-symbols/index.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom box-shadow">
@@ -39,14 +40,20 @@
 
                     }
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="About">About</a>
                     </li>
+
+        
                     <partial name="_LoginPartial" />
                 </ul>
             </div>
         </div>
     </nav>
 
+    @if (ViewContext.View.Path == "/Views/Home/Index.cshtml")
+    {
+        <partial name="_Hero" />
+    }
     <!-- Main Content -->
     <div class="container">
         <main role="main" class="pb-3">

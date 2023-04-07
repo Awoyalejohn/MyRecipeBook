@@ -7,9 +7,9 @@
 <h1>Create Recipes</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Recipe.Name" class="control-label"></label>
                 <input asp-for="Recipe.Name" class="form-control">
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.Description" class="control-label"></label>
-                <textarea asp-for="Recipe.Description" class="form-control"></textarea>
+                <textarea asp-for="Recipe.Description" rows="5" class="form-control"></textarea>
                 <span asp-validation-for="Recipe.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,82 +35,97 @@
                 <input asp-for="Recipe.Serves" class="form-control">
                 <span asp-validation-for="Recipe.Serves" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Ingredients.Ingredient1" class="control-label"></label>
                 <input asp-for="Ingredients.Ingredient1" class="form-control">
                 <span asp-validation-for="Ingredients.Ingredient1" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient2" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient2" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient2" class="text-danger"></span>
+
+            <!-- Additional Ingredients section -->
+            <div class="ingredients-container">
+               
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient2" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient2" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient2" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient3" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient3" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient3" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient4" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient4" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient4" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient5" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient5" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient5" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient6" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient6" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient6" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient7" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient7" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient7" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient8" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient8" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient8" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient9" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient9" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient9" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Ingredients.Ingredient10" class="control-label"></label>
+                    <input asp-for="Ingredients.Ingredient10" class="form-control">
+                    <span asp-validation-for="Ingredients.Ingredient10" class="text-danger"></span>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient3" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient3" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient4" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient4" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient4" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient5" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient5" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient5" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient6" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient6" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient6" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient7" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient7" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient7" class="text-danger"></span>
-            </div>
-              <div class="form-group">
-                <label asp-for="Ingredients.Ingredient8" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient8" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient8" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient9" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient9" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient9" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ingredients.Ingredient10" class="control-label"></label>
-                <input asp-for="Ingredients.Ingredient10" class="form-control">
-                <span asp-validation-for="Ingredients.Ingredient10" class="text-danger"></span>
-            </div>
+            <button type="button" class="btn btn-success" id="add-ingredient">Add Ingredient</button>
+            <button type="button" class="btn btn-danger d-none" id="remove-ingredient">Remove Ingredient</button>
           
             <div class="form-group">
                 <label asp-for="Steps.Step1" class="control-label"></label>
-                <textarea asp-for="Steps.Step1" class="form-control"></textarea>
+                <textarea asp-for="Steps.Step1" rows="5" class="form-control"></textarea>
                 <span asp-validation-for="Steps.Step1" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Steps.Step2" class="control-label"></label>
-                <textarea asp-for="Steps.Step2" class="form-control"></textarea>
-                <span asp-validation-for="Steps.Step2" class="text-danger"></span>
+
+            <!-- Additional Steps section -->
+            <div class="steps-container">
+                <div class="form-group d-none">
+                    <label asp-for="Steps.Step2" class="control-label"></label>
+                    <textarea asp-for="Steps.Step2" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Steps.Step2" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Steps.Step3" class="control-label"></label>
+                    <textarea asp-for="Steps.Step3" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Steps.Step3" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Steps.Step4" class="control-label"></label>
+                    <textarea asp-for="Steps.Step4" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Steps.Step4" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Steps.Step5" class="control-label"></label>
+                    <textarea asp-for="Steps.Step5" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Steps.Step5" class="text-danger"></span>
+                </div>
             </div>
-                  <div class="form-group">
-                <label asp-for="Steps.Step3" class="control-label"></label>
-                <textarea asp-for="Steps.Step3" class="form-control"></textarea>
-                <span asp-validation-for="Steps.Step3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Steps.Step4" class="control-label"></label>
-                <textarea asp-for="Steps.Step4" class="form-control"></textarea>
-                <span asp-validation-for="Steps.Step4" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Steps.Step5" class="control-label"></label>
-                <textarea asp-for="Steps.Step5" class="form-control"></textarea>
-                <span asp-validation-for="Steps.Step5" class="text-danger"></span>
-            </div>
+            <button type="button" class="btn btn-success" id="add-step">Add Step</button>
+            <button type="button" class="btn btn-danger d-none" id="remove-step">Remove step</button>
 
             <div class="form-group">
                 <label asp-for="Recipe.PreparationTime" class="control-label"></label>
@@ -129,7 +144,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-success">Create</button>
             </div>
         </form>
     </div>

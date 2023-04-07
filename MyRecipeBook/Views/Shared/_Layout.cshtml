@@ -8,6 +8,7 @@
     <title>@ViewData["Title"] - My Recipe Book</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 </head>
@@ -28,26 +29,28 @@
                         <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Recipe" asp-action="Index">Recipes</a>
+                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Recipe" asp-action="Index">Recipes</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Bookmark" asp-action="Index">Bookmarks</a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Bookmark" asp-action="Index">Bookmarks</a>
+                        </li>
+
+                    }
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
+                    <partial name="_LoginPartial" />
                 </ul>
             </div>
-                <partial name="_LoginPartial" />
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_Notification" />
             @RenderBody()
         </main>
     </div>
@@ -60,6 +63,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("scripts", required: false)
 

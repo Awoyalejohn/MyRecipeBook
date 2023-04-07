@@ -10,6 +10,7 @@ using MyRecipeBook.Repositotory;
 using MyRecipeBook.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyRecipeBook.Controllers
 {
@@ -67,6 +68,7 @@ namespace MyRecipeBook.Controllers
         }
 
         // GET: Recipe/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create() => View();
 
         // POST: Recipe/Create
@@ -88,6 +90,7 @@ namespace MyRecipeBook.Controllers
                 {
                     _recipeRepository.InsertRecipe(recipe);
                     await _recipeRepository.SaveAsync();
+                    TempData["success"] = "Recipe created successfully";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
@@ -102,6 +105,7 @@ namespace MyRecipeBook.Controllers
             {
                 ModelState.AddModelError("", "Error with the form");
             }
+            TempData["error"] = "Error with form";
             return View(recipeViewModel);
         }
 
@@ -133,6 +137,7 @@ namespace MyRecipeBook.Controllers
         }
 
         // GET Recipe/Edit/{Id}
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -155,6 +160,7 @@ namespace MyRecipeBook.Controllers
         }
 
         // POST Recipe/Edit/{Id}
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Recipe,Ingredients,Steps,UploadImage")] RecipeViewModel recipeViewModel)
@@ -191,6 +197,7 @@ namespace MyRecipeBook.Controllers
                 {
                     _recipeRepository.UpdateRecipe(recipe);
                     await _recipeRepository.SaveAsync();
+                    TempData["success"] = "Recipe updated successfully";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
@@ -201,10 +208,12 @@ namespace MyRecipeBook.Controllers
                         "see your system administrator.");
                 }
             }
+            TempData["error"] = "Error with form";
             return View(recipeViewModel);
         }
 
         // GET: Recipe/Delete/{id}
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -218,6 +227,7 @@ namespace MyRecipeBook.Controllers
         }
 
         //POST: Recipe/Delete/{id}
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName(nameof(Delete))]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -236,10 +246,12 @@ namespace MyRecipeBook.Controllers
 
                 _recipeRepository.DeleteRecipe(recipe);
                 await _recipeRepository.SaveAsync();
+                TempData["success"] = "Recipe deleted successfully";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception)
             {
+                TempData["error"] = "Error trying to delete recipe";
                 ModelState.AddModelError("", "Could not delete image");
                 return RedirectToAction(nameof(Delete), new { id, saveChangesError = true });
             }

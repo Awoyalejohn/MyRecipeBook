@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace MyRecipeBook.Tests.Controllers
 {
-   
+
     public class RecipeControllerTests
     {
         private static IFormFile CreateMockImageFile(string fileName, byte[] content)
@@ -34,7 +34,7 @@ namespace MyRecipeBook.Tests.Controllers
             // Arrange
             var mockRecipeRepository = new Mock<IRecipeRepository>();
             var mockImageService = new Mock<IImageService>();
-            var testData = new List<Recipe>() 
+            var testData = new List<Recipe>()
             {
                 new Recipe()
             {
@@ -71,7 +71,7 @@ namespace MyRecipeBook.Tests.Controllers
             var controller = new RecipeController(mockRecipeRepository.Object, mockImageService.Object);
 
             // Act
-            var result = await controller.Index();
+            var result = await controller.Index("", "", "", 1);
 
             // Assert 
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -87,7 +87,7 @@ namespace MyRecipeBook.Tests.Controllers
             var mockRecipeRepository = new Mock<IRecipeRepository>();
             var mockImageService = new Mock<IImageService>();
             var controller = new RecipeController(mockRecipeRepository.Object, mockImageService.Object);
-            
+
 
             // Act
             var result = controller.Create();
@@ -107,7 +107,7 @@ namespace MyRecipeBook.Tests.Controllers
             var mockImage = CreateMockImageFile("test.png", imageContent);
             var recipeViewModel = new RecipeViewModel()
             {
-                Recipe = new Recipe() 
+                Recipe = new Recipe()
                 {
                     Id = 1,
                     Name = "Crusted Pork",

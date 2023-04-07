@@ -37,6 +37,7 @@ namespace MyRecipeBook.Controllers
             await _userRepository.AddRecipeToUser(recipe);
 
             await _userRepository.SaveAsync();
+            TempData["success"] = "Recipe bookmarked successfully";
             return RedirectToAction("Detail", "Recipe", new { Id = id});
         }
 
@@ -51,6 +52,7 @@ namespace MyRecipeBook.Controllers
             await _userRepository.RemoveRecipeFromUser(recipe);
 
             await _userRepository.SaveAsync();
+            TempData["success"] = "Removed Recipe bookmark successfully";
             return RedirectToAction("Detail", "Recipe", new { Id = id });
         }
     }

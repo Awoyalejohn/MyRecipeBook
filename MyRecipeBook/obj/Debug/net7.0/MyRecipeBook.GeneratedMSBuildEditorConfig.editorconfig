@@ -9,113 +9,113 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyRecipeBook
 build_property.RootNamespace = MyRecipeBook
-build_property.ProjectDir = C:\Users\John\Documents\GitHub\MyRecipeBook\MyRecipeBook\
+build_property.ProjectDir = c:\Users\John\Documents\GitHub\MyRecipeBook\MyRecipeBook\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\John\Documents\GitHub\MyRecipeBook\MyRecipeBook
+build_property.MSBuildProjectDirectory = c:\Users\John\Documents\GitHub\MyRecipeBook\MyRecipeBook
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Login.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Logout.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Register.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ViewImports.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ViewStart.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Bookmark/Index.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Bookmark/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/About.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/Index.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/Privacy.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Create.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Delete.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Detail.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Edit.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Index.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Recipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/Error.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Hero.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Hero.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZXJvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Layout.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_LoginPartial.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Notification.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/_ViewImports.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/_ViewStart.cshtml]
+[c:/Users/John/Documents/GitHub/MyRecipeBook/MyRecipeBook/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

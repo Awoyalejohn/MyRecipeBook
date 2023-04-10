@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
 using MyRecipeBook.Controllers;
 using MyRecipeBook.Models;
@@ -68,10 +69,16 @@ namespace MyRecipeBook.Tests.Controllers
             };
             mockRecipeRepository.Setup(repo => repo.GetAllRecipesAsync())
                 .ReturnsAsync(testData);
-            var controller = new RecipeController(mockRecipeRepository.Object, mockImageService.Object);
+            var httpContext = new DefaultHttpContext();
+            var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
+            tempData["success"] = "Recipe created successfully";
+            var controller = new RecipeController(mockRecipeRepository.Object, mockImageService.Object)
+            {
+                TempData = tempData
+            };
 
             // Act
-            var result = await controller.Index("", "", "", 1);
+            var result = await controller.Index("", "", "", null);
 
             // Assert 
             var viewResult = Assert.IsType<ViewResult>(result);

@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MyRecipeBook/Data/SeedData.cs
+/MyRecipeBook/wwwroot/css/site.css
